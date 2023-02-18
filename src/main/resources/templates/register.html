@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" th:href="@{/css/register.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<main>
+    <form class="signup" th:method="post" th:action="@{/user/save}" th:object="${user}">
+        <div class="title">
+            <h2>Register here</h2>
+        </div>
+        <div class="fields">
+            <input type="text" name="name" placeholder="Enter your Full Name..." required th:field="*{name}">
+            <input type="email" name="email" placeholder="Enter your email address..." required th:field="*{email}">
+            <input type="number" name="number" placeholder="Enter your number..." required th:field="*{number}">
+            <input type="text" name="address" placeholder="Enter your address..." required th:field="*{address}">
+            <input type="password" name="password" placeholder="Enter your password..." required th:field="*{password}">
+            <input type="password" name="confirm-password" placeholder="Confirm your password...">
+            <button type="submit">Register</button>
+            <h5>Already have an account? <a th:href="@{/login}">click here</a></h5>
+        </div>
+    </form>
+</main>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/header.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/dashboard.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header th:replace="~{/fragments/header.html}"></header>
+<main>
+    <div class="maintopsection">
+        <div class="mainleftcontainer">
+            <div class="fortitletext">
+                <h1 class="h1-one">Get Your Books</h1>
+                <p class="p-one">Find the Best offers for your Books.</p>
+            </div>
+        </div>
+        <div class="mainrightcontainer">
+            <img class="body-img" th:src="@{/images/books.png}" alt="">
+        </div>
+    </div>
+    <h2 class="title">Find all Books Here</h2>
+    <div id = products-section>
+        <form class="form-item">
+            <div class="item" th:each="books:${books}">
+                <img class="item-pic" th:src="'data:image/png;base64,'+${books.imageBase64}"/>
+                <p class="item-name" th:text="${books.name}"></p>
+                <div class="info">
+                    <p class="item-price" th:text="${books.price}"></p>
+                    <button class="button-cart" type="submit">Add to cart</button>
+                </div>
+            </div>
+            <div class="item">
+                <img class="item-pic" src="Vodka.jpg" alt="">
+                <p class="item-name">Books</p>
+                <div class="info">
+                    <p class="item-price">Rs 500</p>
+                    <button class="button-cart" type="submit">Add to cart</button>
+                </div>
+            </div>
+            <div class="item">
+                <img class="item-pic" src="Vodka.jpg" alt="">
+                <p class="item-name">Books</p>
+                <div class="info">
+                    <p class="item-price">Rs 500</p>
+                    <button class="button-cart" type="submit">Add to cart</button>
+                </div>
+            </div>
+            <div class="item">
+                <img class="item-pic" src="Vodka.jpg" alt="">
+                <p class="item-name">Books</p>
+                <div class="info">
+                    <p class="item-price">Rs 500</p>
+                    <button class="button-cart" type="submit">Add to cart</button>
+                </div>
+            </div>
+            <div class="item">
+                <img class="item-pic" src="Vodka.jpg" alt="">
+                <p class="item-name">Books</p>
+                <div class="info">
+                    <p class="item-price">Rs 500</p>
+                    <button class="button-cart" type="submit">Add to cart</button>
+                </div>
+            </div>
+            <div class="item">
+                <img class="item-pic" src="Vodka.jpg" alt="">
+                <p class="item-name">Books</p>
+                <div class="info">
+                    <p class="item-price">Rs 500</p>
+                    <button class="button-cart" type="submit">Add to cart</button>
+                </div>
+            </div>
+            <div class="item">
+                <img class="item-pic" src="Vodka.jpg" alt="">
+                <p class="item-name">Books</p>
+                <div class="info">
+                    <p class="item-price">Rs 500</p>
+                    <button class="button-cart" type="submit">Add to cart</button>
+                </div>
+            </div>
+            <div class="item">
+                <img class="item-pic" src="Vodka.jpg" alt="">
+                <p class="item-name">Books</p>
+                <div class="info">
+                    <p class="item-price">Rs 500</p>
+                    <button class="button-cart" type="submit">Add to cart</button>
+                </div>
+            </div>
+            <div class="item">
+                <img class="item-pic" src="Vodka.jpg" alt="">
+                <p class="item-name">Books</p>
+                <div class="info">
+                    <p class="item-price">Rs 500</p>
+                    <button class="button-cart" type="submit">Add to cart</button>
+                </div>
+            </div>
+            <div class="item">
+                <img class="item-pic" src="Vodka.jpg" alt="">
+                <p class="item-name">Books</p>
+                <div class="info">
+                    <p class="item-price">Rs 500</p>
+                    <button class="button-cart" type="submit">Add to cart</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</main>
+
+<footer th:replace="~{/fragments/footer.html}"></footer>
+</body>
+</html>
