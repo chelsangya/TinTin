@@ -25,6 +25,7 @@
         <h4>Name</h4>
       </div>
       <div class="fields">
+        <input class="inputs" type="hidden" name="id" hidden="hidden" th:value="${info.id}">
         <label class="labels" for="name">Full Name</label>
         <input class="inputs" type="text" name="name" placeholder="Full Name..." th:value="${info.getName()}">
         <label class="labels" for="email">Email address</label>

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}">
+    <script th:src="@{/js/login.js}" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -15,9 +16,9 @@
             <h2>Login here</h2>
         </div>
         <div class="fields">
-            <input type="email" name="email" placeholder="Enter your email address...">
-            <input type="password" name="password" placeholder="Enter your password...">
-            <button type="submit">Login</button>
+            <input type="email" id="email" name="email" placeholder="Enter your email address..." required/>
+            <input type="password" id="password" name="password" placeholder="Enter your password..." onclick="validateEmail()" required/>
+            <button type="submit" id="button" onclick="fill()">Login</button>
             <h5>Forgot your password? <a th:href="@{/user/request-password-reset}">click here!</a></h5>
             <h5>Don't have an account? <a th:href="@{/user/create}">click here</a></h5>
         </div>

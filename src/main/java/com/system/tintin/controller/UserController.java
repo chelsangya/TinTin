@@ -91,4 +91,6 @@ public class UserController {
         model.addAttribute("message", "Your password has been reset successfully.");
         return "redirect:/login";
     }
+
+
 }

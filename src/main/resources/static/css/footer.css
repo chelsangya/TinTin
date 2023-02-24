@@ -6,7 +6,7 @@ footer {
 .footerleftsection {
     display: flex;
     flex-direction: column;
-    width: 400px;
+    max-width: 400px;
     margin-left: 30px;
 }
 .footerlogo {
@@ -80,4 +80,9 @@ footer {
     justify-content: center;
     align-items: center;
     width: 300px;
+}
+@media (max-width: 575px) {
+    footer {
+        flex-direction: column;
+    }
 }

@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/order_list.css}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css"/>
 </head>
 <body>
 
@@ -32,9 +33,6 @@
         </div>
 
         <ul class="sidebar-list">
-            <li class="sidebar-list-item">
-                <a th:href="@{/admin/dashboard}">Dashboard</a>
-            </li>
             <li class="sidebar-list-item">
                 <a th:href="@{/admin/order-list}">Order List</a>
             </li>
@@ -63,71 +61,46 @@
     <main class="main-container">
         <div class="order-table">
             <form>
-                <table class="content-table">
+                <table class="content-table" id="table_id">
                     <thead>
                     <tr>
+                        <th>User Name</th>
+                        <th>Book Id</th>
                         <th>Book Name</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                        <th>Total Amount</th>
-                        <th>Status</th>
+                        <th>Book Quantity</th>
+                        <th>Book Price</th>
                         <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>Any Book</td>
-                        <td>1</td>
-                        <td>4000</td>
-                        <td>4000</td>
-                        <td>
-                            <fieldset data-role="controlgroup">
-                                <label for="Confirm">Confirming</label>
-                                <input type="checkbox" name="favcolor" id="red" value="red" checked>
-                                <label for="Ongoing">Ongoing</label>
-                                <input type="checkbox" name="favcolor" id="green" value="green">
-                                <label for="Delivered">Delivered</label>
-                                <input type="checkbox" name="favcolor" id="blue" value="blue" checked>
-                            </fieldset>
-                        </td>
-                        <td><button type="submit">Delete</button></td>
-                    </tr>
-                    <tr>
-                        <td>Any Book</td>
-                        <td>1</td>
-                        <td>4000</td>
-                        <td>4000</td>
-                        <td>
-                            <fieldset data-role="controlgroup">
-                                <label for="Confirm">Confirming</label>
-                                <input type="checkbox" name="favcolor" id="red" value="red" checked>
-                                <label for="Ongoing">Ongoing</label>
-                                <input type="checkbox" name="favcolor" id="green" value="green">
-                                <label for="Delivered">Delivered</label>
-                                <input type="checkbox" name="favcolor" id="blue" value="blue" checked>
-                            </fieldset>
-                        </td>
-                        <td><button type="submit">Delete</button></td>
-                    </tr>
-                    <tr>
-                        <td>Any Book</td>
-                        <td>1</td>
-                        <td>4000</td>
-                        <td>4000</td>
-                        <td>
-                            <fieldset data-role="controlgroup">
-                                <label for="Confirm">Confirming</label>
-                                <input type="checkbox" name="confirming" id="confirm" value="confirming" checked>
-                                <label for="Ongoing">Ongoing</label>
-                                <input type="checkbox" name="checkbox" id="ongoing" value="Ongoing">
-                                <label for="Delivered">Delivered</label>
-                                <input type="checkbox" name="delivered" id="delivered" value="delivered" checked>
-                            </fieldset>
-                        </td>
-                        <td><button type="submit">Delete</button></td>
+                    <tr th:each="item:${cartItems}">
+                        <td th:text="${item.getUser().id}"></td>
+                        <td th:text="${item.getBooks().id}">Order Id</td>
+                        <td th:text="${item.getBooks().name}">Name</td>
+                        <td th:text="${item.getBooks().quantity}">Quantity</td>
+                        <td th:text="${item.getBooks().price}">Price</td>
+                        <td><a class="delete-button" th:href="@{~/admin/removeProduct/}+${item.id}">Delete</a></td>
                     </tr>
                     </tbody>
                 </table>
+                <script
+                        type="text/javascript"
+                        charset="utf8"
+                        src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"
+                ></script>
+                <script
+                        type="text/javascript"
+                        charset="utf8"
+                        src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js">
+                    document.getElementsByClassName()
+                </script>
+                <script>
+                    $(function() {
+                        $("#table_id").dataTable();
+                    });
+                </script>
+
+                <br><br>
             </form>
         </div>
     </main>

@@ -1,9 +1,11 @@
 package com.system.tintin.controller;
 
+import com.system.tintin.entity.BookCart;
 import com.system.tintin.entity.Books;
 import com.system.tintin.entity.Queries;
 import com.system.tintin.entity.User;
 import com.system.tintin.pojo.BooksPojo;
+import com.system.tintin.service.BookCartService;
 import com.system.tintin.service.BooksService;
 import com.system.tintin.service.QueryService;
 import com.system.tintin.service.UserService;
@@ -29,13 +31,18 @@ import java.util.List;
 public class AdminController {
     private final UserService userService;
     private final BooksService booksService;
+    private final BookCartService bookCartService;
     private final QueryService queryService;
-    @GetMapping("/dashboard")
-    public String getAdminPage(Model model, Principal principal) {
+    @GetMapping("/order-list")
+    public String getOrderListPage(Model model, Principal principal) {
         if (principal!=null) {
             model.addAttribute("info", userService.findByEmail(principal.getName()));
         }
-        return "admin_dashboard";
+        assert principal != null;
+        Integer id = userService.findByEmail(principal.getName()).getId();
+        List<BookCart> list = bookCartService.fetchAll(id);
+        model.addAttribute("cartItems", list);
+        return "order_list";
     }
     @GetMapping("/user-list")
     public String getUserListPage(Model model, Principal principal) {
@@ -72,16 +79,8 @@ public class AdminController {
         if (principal!=null) {
             model.addAttribute("info", userService.findByEmail(principal.getName()));
         }
-        List<Books> books = booksService.fetchAll();
-        model.addAttribute("books", books.stream().map(book ->
-                Books.builder()
-                        .id(book.getId())
-                        .imageBase64(getImageBase64(book.getPhoto()))
-                        .name(book.getName())
-                        .quantity(book.getQuantity())
-                        .price(book.getPrice())
-                        .build()
-        ));
+        List<Books> book = booksService.fetchAll();
+        model.addAttribute("book", book);
         return "bookslist";
     }
     @GetMapping("/editBooks/{id}")
@@ -105,13 +104,6 @@ public class AdminController {
     public String saveBooks(@Valid BooksPojo booksPojo) throws IOException {
         booksService.save(booksPojo);
         return "redirect:/dashboard";
-    }
-    @GetMapping("/order-list")
-    public String getOrderListPage(Model model, Principal principal) {
-        if (principal!=null) {
-            model.addAttribute("info", userService.findByEmail(principal.getName()));
-        }
-        return "order_list";
     }
     @GetMapping("/queries")
     public String getQueryPage(Model model, Principal principal) {

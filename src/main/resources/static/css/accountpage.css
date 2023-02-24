@@ -1,12 +1,13 @@
 * {
-    margin: 0;
     padding: 0;
+    margin: 0;
     box-sizing: border-box;
 }
 body {
-    flex-wrap: wrap;
-    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
     background-color: #00001F;
+    font-family: 'Poppins', sans-serif;
 }
 html {
     scroll-behavior: smooth;
@@ -24,7 +25,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 1000px;
+    width: 60%;
     border: 2px solid grey;
     box-shadow: 5px 5px 5px grey;
 }
@@ -37,7 +38,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 200px;
+    max-width: 200px;
     margin-top: 15px;
 }
 .main-form {
@@ -56,13 +57,14 @@ main {
 .fields {
     display: flex;
     flex-direction: column;
-    width: 385px;
+    max-width: 385px;
     margin-top: 15px;
 }
 .labels {
     color: grey;
 }
 .inputs {
+    display: flex;
     height: 42px;
     width: 380px;
     border-radius: 12px;
@@ -108,4 +110,28 @@ main {
     justify-content: flex-end;
     align-items: center;
     width: 400px;
+}
+@media (max-width: 645px) {
+    .main-container {
+        width: 100%;
+    }
+    .main-form {
+        width: 100%;
+    }
+}
+@media (max-width:388px) {
+    .inputfile {
+        width: 100px;
+    }
+    .for-profile-picbutton {
+        justify-content: center;
+        width: 50%;
+    }
+    .profile-section {
+        flex-direction: column;
+        width: 100%;
+    }
+    .inputs {
+        width: 320px;
+    }
 }

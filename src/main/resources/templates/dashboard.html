@@ -27,13 +27,16 @@
     </div>
     <h2 class="title">Find all Books Here</h2>
     <div id = products-section>
-        <form class="form-item">
-            <div class="item" th:each="books:${books}">
+            <div class="item" th:each="books:${book}">
                 <img class="item-pic" th:src="'data:image/png;base64,'+${books.imageBase64}"/>
                 <p class="item-name" th:text="${books.name}"></p>
                 <div class="info">
                     <p class="item-price" th:text="${books.price}"></p>
-                    <button class="button-cart" type="submit">Add to cart</button>
+                    <form class="form-item" th:method="post" th:action="@{/dashboard/save}" th:object="${book}">
+                        <input type="text"  hidden="hidden" name="books_id" th:value="${books.id}">
+                        <input type="number" hidden="hidden" name="user_id" th:value="${info.id}">
+                        <button class="button-cart" type="submit">Add to cart</button>
+                    </form>
                 </div>
             </div>
             <div class="item">
@@ -108,7 +111,6 @@
                     <button class="button-cart" type="submit">Add to cart</button>
                 </div>
             </div>
-        </form>
     </div>
 </main>
 

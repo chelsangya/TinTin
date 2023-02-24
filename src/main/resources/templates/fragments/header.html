@@ -10,7 +10,7 @@
             <button class="search-btn">Search</button>
         </form>
         <div class="headerrightsection">
-            <a href="" class="cart">
+            <a th:href="@{/cart}" class="cart">
                 <i class="fa-solid fa-cart-shopping"></i>
             </a>
             <a th:href="@{/user/profile}" class="profile">
@@ -28,7 +28,7 @@
                     <a class="header-a" th:href="@{/dashboard#products-section}">Books</a>
                 </li>
                 <li class="header-li">
-                    <a class="header-a" th:href="@{/aboutus}">About us</a>
+                    <a class="header-a" th:href="@{/dashboard/aboutus}">About us</a>
                 </li>
             </ul>
         </nav>

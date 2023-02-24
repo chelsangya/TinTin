@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <link rel="stylesheet" th:href="@{/css/register.css}">
+    <script th:src="@{/js/register.js}" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -15,13 +16,13 @@
             <h2>Register here</h2>
         </div>
         <div class="fields">
-            <input type="text" name="name" placeholder="Enter your Full Name..." required th:field="*{name}">
-            <input type="email" name="email" placeholder="Enter your email address..." required th:field="*{email}">
-            <input type="number" name="number" placeholder="Enter your number..." required th:field="*{number}">
-            <input type="text" name="address" placeholder="Enter your address..." required th:field="*{address}">
-            <input type="password" name="password" placeholder="Enter your password..." required th:field="*{password}">
-            <input type="password" name="confirm-password" placeholder="Confirm your password...">
-            <button type="submit">Register</button>
+            <input type="text" name="name" id="name" placeholder="Enter your Full Name..." required th:field="*{name}">
+            <input type="email" name="email" id="email" placeholder="Enter your email address..." required th:field="*{email}">
+            <input type="number" name="number" id="number" placeholder="Enter your number..." required th:field="*{number}">
+            <input type="text" name="address" id="address" placeholder="Enter your address..." required th:field="*{address}">
+            <input type="password" name="password" id="change-password" placeholder="Enter your password..." required th:field="*{password}">
+            <input type="password" name="confirm-password" id="confirm-password" placeholder="Confirm your password...">
+            <button type="submit" id="register-btn" onclick="validateRegister()">Register</button>
             <h5>Already have an account? <a th:href="@{/login}">click here</a></h5>
         </div>
     </form>

@@ -33,9 +33,6 @@
 
         <ul class="sidebar-list">
             <li class="sidebar-list-item">
-                <a th:href="@{/admin/dashboard}">Dashboard</a>
-            </li>
-            <li class="sidebar-list-item">
                 <a th:href="@{/admin/order-list}">Order List</a>
             </li>
             <li class="sidebar-list-item">
@@ -63,6 +60,7 @@
     <main class="main-container">
         <form th:method="post" th:action="@{/admin/save/books}" th:object="${books}" enctype="multipart/form-data">
             <div class="form-fields">
+                <input type="number" hidden="hidden" name="id" th:field="*{id}" th:value="${books.id}">
                 <input type="file" name="photo" accept="image/*" id="photo" class="form-control-file" required>
                 <input type="text" name="name" id="name" placeholder="Enter the product's name..." required th:field="*{name}">
                 <input type="text" name="quantity" id="quantity" placeholder="Enter the product's quantity..." required th:field="*{quantity}">
